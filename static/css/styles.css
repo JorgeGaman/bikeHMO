@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+h1 {
+  font-size: 40px;
+  margin-top: 0;
+  text-align: center;
+}
+h2 {
+  font-size: 28px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.bikes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.bike-card {
+  background-color: #f0f0f0;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.bike-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.bike-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.bike-card p {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.time-selection {
+  margin-top: 2rem;
+}
+
+.time-selection label {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.time-selection select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.logout-btn {
+  margin-top: 2rem;
+  background-color: #393f81;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+  background-color: #252b5e;
+}

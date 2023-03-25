@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+<h1>{% block title %} BikeHMO {% endblock %}</h1>
+{% block content %}
+<div><h1>BikeHMO</h1></div>
+<header>
+  <h1>BIKEHMO</h1>
+  <a href="#">Cerrar Sesión</a>
+</header>
+<main>
+  <h2>Bicicletas Disponibles</h2>
+  <div class="bikes-container">
+    <div class="bike-card">
+      <img
+        src="{{ url_for('static', filename='/img/bike.png') }}"
+        alt="Bicicleta"
+        class="img-fluid"
+        style="border-radius: 1rem 1rem 1rem 1rem"
+      />
+      <h3>Bicicleta 1</h3>
+      <p>Precio por hora: $20</p>
+      <select>
+        <option value="1">1 Hora</option>
+        <option value="2">2 Horas</option>
+        <option value="3">3 Horas</option>
+        <option value="4">4 Horas</option>
+      </select>
+      <button>Rentar</button>
+    </div>
+    <div class="bike-card">
+      <img
+        src="{{ url_for('static', filename='/img/bike.png') }}"
+        alt="Bicicleta"
+        class="img-fluid"
+        style="border-radius: 1rem 1rem 1rem 1rem"
+      />
+      <h3>Bicicleta 2</h3>
+      <p>Precio por hora: $20</p>
+      <select>
+        <option value="1">1 Hora</option>
+        <option value="2">2 Horas</option>
+        <option value="3">3 Horas</option>
+        <option value="4">4 Horas</option>
+      </select>
+      <button>Rentar</button>
+    </div>
+    <div class="bike-card">
+      <img
+        src="{{ url_for('static', filename='/img/bike.png') }}"
+        alt="Bicicleta"
+        class="img-fluid"
+        style="border-radius: 1rem 1rem 1rem 1rem"
+      />
+      <h3>Bicicleta 3</h3>
+      <p>Precio por hora: $10</p>
+      <select>
+        <option value="1">1 Hora</option>
+        <option value="2">2 Horas</option>
+        <option value="3">3 Horas</option>
+        <option value="4">4 Horas</option>
+      </select>
+      <button>Rentar</button>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
