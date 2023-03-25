@@ -5,12 +5,19 @@ app.secret_key = "pruebas3312"
 
 # Lista de correos registrados (sólo para fines de demostración)
 users = {"jorge@gmail.com": "12345"}
+bikes = {
+    "sencilla1": True,
+    "sencilla2": True,
+    "sencilla3": True,
+    "sencilla4": True,
+    "sencilla5": True,
+}
 
 # Ruta principal, requiere inicio de sesión
 @app.route("/")
 def index():
     if "email" in session:
-        return render_template("index.html", email=session["email"])
+        return render_template("index.html", email=session["email"], bikes=bikes)
     return redirect(url_for("login"))
 
 

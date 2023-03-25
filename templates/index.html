@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 <h1>{% block title %} BikeHMO {% endblock %}</h1>
 {% block content %}
-<div><h1>BikeHMO</h1></div>
 <header>
   <h1>BIKEHMO</h1>
   <a href="#">Cerrar Sesión</a>
 </header>
-<main>
-  <h2>Bicicletas Disponibles</h2>
+<main class="grid-container">
   <div class="bikes-container">
+    <h2>Bicicletas Disponibles</h2>
+    {% for key, value in bikes.items() %} {% if value %}
     <div class="bike-card">
+      <h3>{{ key }}</h3>
       <img
         src="{{ url_for('static', filename='/img/bike.png') }}"
         alt="Bicicleta"
         class="img-fluid"
         style="border-radius: 1rem 1rem 1rem 1rem"
       />
-      <h3>Bicicleta 1</h3>
       <p>Precio por hora: $20</p>
       <select>
         <option value="1">1 Hora</option>
@@ -24,43 +24,18 @@
         <option value="3">3 Horas</option>
         <option value="4">4 Horas</option>
       </select>
-      <button>Rentar</button>
+      <button class="rent-button" data="{{key}}">Rentar</button>
     </div>
-    <div class="bike-card">
-      <img
-        src="{{ url_for('static', filename='/img/bike.png') }}"
-        alt="Bicicleta"
-        class="img-fluid"
-        style="border-radius: 1rem 1rem 1rem 1rem"
-      />
-      <h3>Bicicleta 2</h3>
-      <p>Precio por hora: $20</p>
-      <select>
-        <option value="1">1 Hora</option>
-        <option value="2">2 Horas</option>
-        <option value="3">3 Horas</option>
-        <option value="4">4 Horas</option>
-      </select>
-      <button>Rentar</button>
+    {% endif %} {% endfor %}
+  </div>
+  <div class="rent-summary">
+    <h3>Resumen de renta</h3>
+    <p>Bicicletas rentadas:<span id="rented_bikes">0</span></p>
+    <div class="rent-summary-list">
+      <ul id="rent_summary_list"></ul>
     </div>
-    <div class="bike-card">
-      <img
-        src="{{ url_for('static', filename='/img/bike.png') }}"
-        alt="Bicicleta"
-        class="img-fluid"
-        style="border-radius: 1rem 1rem 1rem 1rem"
-      />
-      <h3>Bicicleta 3</h3>
-      <p>Precio por hora: $10</p>
-      <select>
-        <option value="1">1 Hora</option>
-        <option value="2">2 Horas</option>
-        <option value="3">3 Horas</option>
-        <option value="4">4 Horas</option>
-      </select>
-      <button>Rentar</button>
-    </div>
+    <p>Total a Pagar: $<span id="total-price">0</span></p>
+    <button class="pay-button">Pagar</button>
   </div>
 </main>
-
 {% endblock %}
