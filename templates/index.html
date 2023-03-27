@@ -1,41 +1,79 @@
-{% extends 'base.html' %}
-<h1>{% block title %} BikeHMO {% endblock %}</h1>
-{% block content %}
+{% extends 'base.html' %} {% block title %} BikeHMO {% endblock %} {% block
+content %}
 <header>
-  <h1>BIKEHMO</h1>
-  <a href="#">Cerrar Sesión</a>
+  <a href="{{url_for('index')}}">BIKEHMO</a>
+  {% if not session.get("email"): %}
+  <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
+  <a href="{{ url_for('login') }}">REGISTRARSE</a>
+  {% else %}
+  <a href="{{ url_for('logout') }}">CERRAR SESIÓN</a>
+  {% endif %}
 </header>
-<main class="grid-container">
-  <div class="bikes-container">
-    <h2>Bicicletas Disponibles</h2>
-    {% for key, value in bikes.items() %} {% if value %}
-    <div class="bike-card">
-      <h3>{{ key }}</h3>
-      <img
-        src="{{ url_for('static', filename='/img/bike.png') }}"
-        alt="Bicicleta"
-        class="img-fluid"
-        style="border-radius: 1rem 1rem 1rem 1rem"
-      />
-      <p>Precio por hora: $20</p>
-      <select>
-        <option value="1">1 Hora</option>
-        <option value="2">2 Horas</option>
-        <option value="3">3 Horas</option>
-        <option value="4">4 Horas</option>
+<div class="grid-container">
+  <div class="bike-card">
+    <img
+      src="{{ url_for('static', filename='/img/bike.png') }}"
+      alt="Bicicleta"
+      class="img-fluid"
+      style="border-radius: 1rem 1rem 1rem 1rem"
+    />
+    <h3>BICICLETAS</h3>
+    <p>
+      En nuestra página podrás rentar bicicletas para disfrutar de un paseo al
+      aire libre. Tenemos una gran variedad de bicicletas disponibles para
+      satisfacer tus necesidades.
+    </p>
+    <p>Ubicacion: Plaza Zaragoza, al centro de la ciudad</p>
+    <p>Costo por hora:</p>
+    <p>Niño: $40</p>
+    <p>Adulto: $60</p>
+    <p>Doble: $80</p>
+  </div>
+  <div class="rent-card">
+    <h2>Bicicletas disponibles</h2>
+    <div id="checkbox-list">
+      <select class="form-select" aria-label="Default select example">
+        {% for key, value in bikes.items()%}
+        <option value="{{ key }}">
+          {{ key }} - {{ value['tipo'] }} - ${{ value['precio'] }}
+        </option>
+        {% endfor %}
       </select>
-      <button class="rent-button" data="{{key}}">Rentar</button>
+      <form>
+        <h2>Tiempo de renta (horas)</h2>
+        <input type="number" id="horas" name="horas" min="1" max="8" required />
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="button" class="btn-2" id="reservar-btn">
+            Reservar
+          </button>
+        </div>
+      </form>
+      <p>Solo se pueden rentar hasta 12 horas</p>
     </div>
-    {% endif %} {% endfor %}
   </div>
-  <div class="rent-summary">
-    <h3>Resumen de renta</h3>
-    <p>Bicicletas rentadas:<span id="rented_bikes">0</span></p>
-    <div class="rent-summary-list">
-      <ul id="rent_summary_list"></ul>
-    </div>
-    <p>Total a Pagar: $<span id="total-price">0</span></p>
-    <button class="pay-button">Pagar</button>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <h2>Confirmación de renta</h2>
+    <p id="bike-info"></p>
+    <p id="type-info"></p>
+    <p id="price-info"></p>
+    <p id="hours-info"></p>
+    <p id="total-info"></p>
+    <button
+      id="pay-btn"
+      type="button"
+      class="btn btn-success"
+      href="/confirmar-renta"
+    >
+      Pagar
+    </button>
+    <button type="button" class="btn btn-danger" id="close-btn">
+      Cancelar
+    </button>
   </div>
-</main>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 {% endblock %}

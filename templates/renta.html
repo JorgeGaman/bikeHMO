@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block title %}Renta{% endblock %} {% block content
+%}
+<header>
+  <a href="{{url_for('index')}}">BIKEHMO</a>
+  <a href="{{ url_for('logout') }}">CERRAR SESIÓN</a>
+</header>
+<div class="rent-container">
+  <div class="rent-card">
+    <img
+      src="{{ url_for('static', filename='/img/bike.png') }}"
+      alt="Bicicleta"
+      class="img-fluid"
+      style="border-radius: 1rem 1rem 1rem 1rem"
+    />
+    <h3>¡GRACIAS POR RENTAR!</h3>
+    <p>
+      Tu renta ha sido confirmada. Puedes pagar en la siguiente cuenta bancaria.
+    </p>
+    <p>Nombre del banco: Banamex</p>
+    <p>Nombre del titular: BikeHMO</p>
+    <p>Numero de cuenta: 123456789</p>
+    <p>Clabe: 123456789123456789</p>
+    <p>Referencia: {{folio}}</p>
+    <p>
+      Una vez pagado recibiras correo con la clave de tu bici y la podras
+      recoger en la plaza Zaragoza, en el centro de la ciudad.
+    </p>
+  </div>
+</div>
+<style>
+  .rent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .rent-card {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+</style>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+{% endblock %}

@@ -1,7 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  background-color: #a9d6b9;
 }
 
 header {
@@ -10,7 +9,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 10px;
 }
 
 header h1 {
@@ -19,81 +18,159 @@ header h1 {
 
 header a {
   color: #fff;
+  font-size: 35px;
   text-decoration: none;
-  font-size: 18px;
+  border-bottom: none;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 35px;
   margin-top: 0;
   text-align: center;
+  text-decoration: none;
 }
+
 h2 {
   font-size: 28px;
   margin-top: 0;
   text-align: center;
+  text-decoration: none;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-gap: 20px;
-  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 20px;
+  margin-top: 2rem;
 }
-
-.bikes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  width: auto;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
 .bike-card {
   background-color: #f0f0f0;
   border-radius: 1rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: auto;
+  width: 50%;
   padding: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .bike-card img {
-  max-width: 100%;
+  max-width: 40%;
   height: auto;
   margin-bottom: 1rem;
-}
-
-.bike-card h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .bike-card p {
   margin-bottom: 1rem;
   font-size: 1.2rem;
+  text-align: left;
 }
 
-.rent-summary {
-  display: inline-block;
-  width: 60%;
-  margin-left: 5%;
-  vertical-align: top;
-  background-color: #eee;
-  padding: 1rem;
+.rent-card {
+  background-color: #f0f0f0;
   border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  padding: 1rem;
+  width: 40%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-.rent-summary h2 {
-  font-size: 1.5rem;
+.rent-card h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.rentc-card {
+  background-color: #f0f0f0;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  padding: 1rem;
+  width: 40%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+input {
+  margin: 1rem 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+#checkbox-list select {
+  margin: 1rem 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#checkbox-list option {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+/* Estilo para el overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el popup */
+.popup {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: left;
+  max-width: 500px;
+}
+
+.popup h2 {
   margin-top: 0;
 }
 
-.rent-summary p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+.popup button {
+  margin-top: 1rem;
+  margin-right: 1rem;
 }
 
-.rent-summary span {
-  font-weight: bold;
+.popup p {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 }

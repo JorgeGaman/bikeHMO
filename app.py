@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+import random
 
 app = Flask(__name__)
 app.secret_key = "pruebas3312"
@@ -6,19 +7,25 @@ app.secret_key = "pruebas3312"
 # Lista de correos registrados (sólo para fines de demostración)
 users = {"jorge@gmail.com": "12345"}
 bikes = {
-    "sencilla1": True,
-    "sencilla2": True,
-    "sencilla3": True,
-    "sencilla4": True,
-    "sencilla5": True,
+    "BCN": {
+        "tipo": "Bicicleta niño",
+        "precio": 40,
+    },
+    "BCA": {
+        "tipo": "Bicicleta adulto",
+        "precio": 60,
+    },
+    "BCD": {
+        "tipo": "Bicicleta doble",
+        "precio": 80,
+    },
 }
+
 
 # Ruta principal, requiere inicio de sesión
 @app.route("/")
 def index():
-    if "email" in session:
-        return render_template("index.html", email=session["email"], bikes=bikes)
-    return redirect(url_for("login"))
+    return render_template("index.html", bikes=bikes, folio=folio)
 
 
 # Página de inicio de sesión
@@ -45,8 +52,12 @@ def logout():
     return redirect(url_for("index"))
 
 
+# generame un numero random de 4 digitos
+folio = random.randint(1000, 9999)
+
+
 # Página de renta de bicicletas, requiere inicio de sesión
-@app.route("/renta", methods=["GET", "POST"])
+@app.route("/confirmar-renta", methods=["GET", "POST"])
 def renta():
     if "email" in session:
         if request.method == "POST":
@@ -55,8 +66,9 @@ def renta():
                 "renta.html",
                 email=session["email"],
                 message="Renta procesada correctamente",
+                folio=folio,
             )
-        return render_template("renta.html", email=session["email"])
+        return render_template("renta.html", email=session["email"], folio=folio)
     return redirect(url_for("login"))
 
 
